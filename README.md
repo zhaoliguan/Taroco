@@ -45,7 +45,8 @@ cloud-registry-server|服务注册和发现中心，管理所有微服务的注�
 3.[Git(用于配置仓库)](https://git-scm.com/downloads)
 
 ### 配置中心部署
-1.配置中心部署(cloud-config-server)
+
+#### 1.配置中心部署(cloud-config-server)
 ```
 server:
   port: 8888
@@ -57,6 +58,8 @@ spring:
           uri: https://github.com/your-org/config-repo
           search-paths: '{application}'
 ```
+##### 启动命令
+`java -jar cloud-config-server-0.0.1-SNAPSHOT.jar`
 
 
 ### 技术选型
