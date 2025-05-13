@@ -49,6 +49,7 @@ graph TD
 + [Maven 3.5+](https://maven.apache.org/download.cgi)
 
 + [Git(用于配置仓库)](https://git-scm.com/downloads)
+
 2.推荐配置
 + 内存：≥4GB
 
