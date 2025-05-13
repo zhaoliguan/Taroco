@@ -119,9 +119,11 @@ logging:
 
 - 确保所有依赖的服务（例如 Eureka 注册中心、Config Server 配置中心等）都已正确启动。
 - 如需扩展功能，可根据项目需求修改或新增模块。
-
-
 ---
+<!--by ljq -->
+
+
+
 <!--by lqk -->
 ### 2.taroco-cloud项目
 
@@ -264,7 +266,7 @@ zuul:
 - **追踪模块**: 提供分布式链路追踪功能。
 
 ---
-
+<!-- by tfj -->
 
 
 <!-- by wzy -->
@@ -406,9 +408,7 @@ logging:
   file:
     name: logs/taroco-user.log  # 日志文件位置
 ```
-
-通过以上步骤，可完成 `taroco-user` 服务的独立部署或集成到已有微服务架构中。
-
+<!-- by wzy -->
 
 ### 技术选型
 
