@@ -44,17 +44,17 @@ graph TD
 ```
 ### 详细部署方案
 1.基础环境
-+[JDK 8+环境](https://www.oracle.com/cn/java/technologies/downloads/) 
++ [JDK 8+环境](https://www.oracle.com/cn/java/technologies/downloads/) 
 
-+[Maven 3.5+](https://maven.apache.org/download.cgi)
++ [Maven 3.5+](https://maven.apache.org/download.cgi)
 
-+[Git(用于配置仓库)](https://git-scm.com/downloads)
++ [Git(用于配置仓库)](https://git-scm.com/downloads)
 2.推荐配置
-+内存：≥4GB
++ 内存：≥4GB
 
-+磁盘：≥20GB可用空间
++ 磁盘：≥20GB可用空间
 
-+网络：各组件间需互通
++ 网络：各组件间需互通
 
 ### 配置中心部署
 
