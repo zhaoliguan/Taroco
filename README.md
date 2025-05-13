@@ -46,10 +46,17 @@ cloud-registry-server|服务注册和发现中心，管理所有微服务的注�
 
 ### 配置中心部署
 1.配置中心部署(cloud-config-server)
-\'''
- 111
- 111
-\'''
+\```
+server:
+  port: 8888
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/your-org/config-repo
+          search-paths: '{application}'
+\```
 
 
 ### 技术选型
