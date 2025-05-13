@@ -25,8 +25,105 @@ Taroco
 ```
 ## 部署说明
 
+
+根据 Taroco 项目架构中的描述和常见的 Spring Boot/Spring Cloud 项目部署流程，以下是 assembling 部分的部署说明：
+
+---
+<!--by ljq -->
+### 1.taroco-assembling项目
+
+taroco-assembling 是 Taroco 项目的聚合模块。它主要负责将各个子模块集成到一个整体中，用于统一构建和管理。
+
+#### 1. 环境准备
+
+在部署之前，请确保以下环境已经准备好：
+
+- **JDK 8+**：确保安装了 Java JDK 1.8 或更高版本。
+  - [JDK 下载链接](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
+- **Maven 3.5+**：确保安装了 Maven 构建工具。
+  - [Maven 下载链接](https://maven.apache.org/download.cgi)
+- **Git**：用于拉取代码仓库。
+  - [Git 下载链接](https://git-scm.com/downloads)
+
+#### 2. 拉取代码
+
+1. 使用 Git 克隆项目代码到本地：
+   ```bash
+   git clone https://github.com/penguin-texas/Taroco.git
+   ```
+2. 进入项目的根目录：
+   ```bash
+   cd Taroco
+   ```
+
+#### 3. 构建项目
+
+1. 使用 Maven 构建项目，生成所有模块的 .jar 文件：
+   ```bash
+   mvn clean install -DskipTests
+   ```
+   > **注意**：-DskipTests 参数会跳过测试用例的执行。如果需要运行测试，请移除该参数。
+
+2. 构建完成后，taroco-assembling 的输出文件将位于 target 文件夹中，例如：
+   ```
+   taroco-assembling/target/taroco-assembling-0.0.1-SNAPSHOT.jar
+   ```
+
+#### 4. 配置文件准备
+
+在运行 taroco-assembling 模块之前，请确保配置文件已正确设置。以下是一个示例 application.yml 配置文件：
+
+```yaml
+server:
+  port: 8080
+
+spring:
+  application:
+    name: taroco-assembling
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/ # 注册中心地址
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    root: INFO
+```
+
+> **提示**：根据实际情况修改配置文件，例如 Eureka`注册中心地址等。
+
+#### 5. 启动服务
+
+1. 使用以下命令启动 taroco-assembling 模块：
+   ```bash
+   java -jar taroco-assembling/target/taroco-assembling-0.0.1-SNAPSHOT.jar
+   ```
+
+2. 服务启动后，您可以在浏览器中访问 http://localhost:8080 ，以确认服务是否正常运行。
+
+#### 6. 部署到生产环境
+
+如果需要将服务部署到生产环境，请考虑以下事项：
+
+- **操作系统**：推荐使用 Linux 系统（如 CentOS 或 Ubuntu）。
+- **进程管理**：使用 systemd、supervisor 或 pm2 等工具管理服务进程。
+- **反向代理**：使用 Nginx 配置反向代理以支持 HTTPS 和负载均衡。
+- **日志管理**：配置日志文件的存储路径和日志轮转策略。
+
+#### 7. 其他注意事项
+
+- 确保所有依赖的服务（例如 Eureka 注册中心、Config Server 配置中心等）都已正确启动。
+- 如需扩展功能，可根据项目需求修改或新增模块。
+
+---
+
+
+
 <!--by lqk -->
-### 1.taroco-cloud项目
+### 2.taroco-cloud项目
 
 组件名称|核心功能|关键技术
 --|:--:|--:
