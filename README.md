@@ -24,7 +24,7 @@ Taroco
 |    ├── uc-query -- 用户查询端
 ```
 ## 部署说明
-
+<!--by lqk -->
 ### 1.taroco-cloud项目
 
 组件名称|核心功能|关键技术
@@ -108,8 +108,8 @@ zuul:
 
 3.访问熔断监控:http://localhost:7979/hystrix
 
-4.通过API网关访问服务:http://localhost:8080/your-service
-
+4.通过API网关访问服务:http://localhost:8080/your-service    
+<!-- by lqk -->
 ### 技术选型
 
 #### 后端技术:
