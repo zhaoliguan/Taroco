@@ -119,13 +119,18 @@ zuul:
 `java -jar cloud-api-gateway-0.0.1-SNAPSHOT.jar`
 
 #### 验证部署成功
-1.访问注册中心:http://localhost:8761 应看到管理界面
-
-2.访问配置中心:http://localhost:8888/application/default 应返回配置
-
-3.访问熔断监控:http://localhost:7979/hystrix
-
-4.通过API网关访问服务:http://localhost:8080/your-service    
++ 注册中心
+  访问:http://localhost:8761 
+  -[X]预期:显示Eureka控制台,无注册服务
++ 配置中心
+  访问:http://localhost:8888/application/default 
+  -[X]预期:返回JSON格式的配置信息
++ 熔断监控
+  访问:http://localhost:7979/hystrix
+  -[X]预期:显示Hystrix Dashboard页面
++ API网关
+  访问:http://localhost:8080/your-service
+  -[X]预期:返回{"status":"UP"}
 <!-- by lqk -->
 ### 技术选型
 
