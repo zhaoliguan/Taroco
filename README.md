@@ -60,6 +60,7 @@ graph TD
 ### 配置中心部署
 
 #### 1.配置中心部署(cloud-config-server)
+配置文件application.yml :
 ```
 server:
   port: 8888
@@ -71,10 +72,11 @@ spring:
           uri: https://github.com/your-org/config-repo
           search-paths: '{application}'
 ```
-##### 启动命令
+##### 启动命令:
 `java -jar cloud-config-server-0.0.1-SNAPSHOT.jar`
 
 #### 2.注册中心部署(cloud-registry-server)
+配置文件application.yml :
 ```
 server:
   port: 8761
@@ -85,10 +87,11 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
 ```
-##### 启动命令
+##### 启动命令:
 `java -jar cloud-registry-server-0.0.1-SNAPSHOT.jar`
 
 #### 3.熔断监控部署(cloud-circuit-breaker)
+配置文件application.yml :
 ```
 server:
   port: 7979
@@ -98,10 +101,11 @@ management:
       exposure:
         include: hystrix.stream
 ```
-##### 启动命令
+##### 启动命令:
 `java -jar cloud-circuit-breaker-0.0.1-SNAPSHOT.jar`
 
 #### 4.API网关部署(cloud-api-gateway)
+配置文件application.yml :
 ```
 server:
   port: 8080
@@ -111,7 +115,7 @@ zuul:
       path: /user/**
       serviceId: user-service
 ```
-##### 启动命令
+##### 启动命令:
 `java -jar cloud-api-gateway-0.0.1-SNAPSHOT.jar`
 
 #### 验证部署成功
