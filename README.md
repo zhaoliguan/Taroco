@@ -26,7 +26,7 @@ Taroco
 ## 部署说明
 
 
-根据 Taroco 项目架构中的描述和常见的 Spring Boot/Spring Cloud 项目部署流程，以下是 assembling 部分的部署说明：
+根据 Taroco 项目架构中的描述和常见的 Spring Boot/Spring Cloud 项目部署流程，以下是部署说明：
 
 ---
 <!--by ljq -->
@@ -118,14 +118,11 @@ logging:
 - 确保所有依赖的服务（例如 Eureka 注册中心、Config Server 配置中心等）都已正确启动。
 - 如需扩展功能，可根据项目需求修改或新增模块。
 
+
 ---
-下面是仿照提供的示例为 taroco-user 项目创建的部署说明：
-
-
-
-
 <!--by lqk -->
-### 3.taroco-cloud项目
+### 2.taroco-cloud项目
+
 
 组件名称|核心功能|关键技术
 --|:--:|--:
@@ -232,7 +229,7 @@ zuul:
    + 预期:返回{"status":"UP"}
 <!-- by lqk -->
 
-
+---
 ### 4. taroco-user 项目
 
 **组件名称** | **核心功能** | **关键技术**
