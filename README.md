@@ -5,8 +5,6 @@
 
 ## 项目介绍
 
-## 部署说明
-
 ## 项目架构
  
 ``` lua
@@ -25,6 +23,13 @@ Taroco
 |    ├── uc-common -- 用户公用
 |    ├── uc-query -- 用户查询端
 ```
+##部署说明
+###taroco-cloud
+组件名称|核心功能|关键技术
+cloud-api-gateway|统一API入口，负责路由转发，权限控制，请求过滤等  |Zuul/Gateway
+cloud-circuit-breaber|熔断监控仪表盘，实时显示服务健康状态|Hystrix Dashboard
+cloud-config-server|集中化管理所有，支持多环境配置|Spring Cloud Config Server
+cloud-registry-server|服务注册和发现中心，管理所有微服务的注册信息|Eureka Server
 
 
 ### 技术选型
