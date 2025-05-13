@@ -42,15 +42,19 @@ graph TD
     B --> C[熔断监控]
     B --> D[API网关]
 ```
-
-1.配置中心(config-server) -> 2.注册中心(registry-server) -> 3.熔断监控(circuit-breaber) -> 4.API(api-gateway)
-
 ### 详细部署方案
-1.[JDK 8+环境](https://www.oracle.com/cn/java/technologies/downloads/) 
+1.基础环境
++[JDK 8+环境](https://www.oracle.com/cn/java/technologies/downloads/) 
 
-2.[Maven 3.5+](https://maven.apache.org/download.cgi)
++[Maven 3.5+](https://maven.apache.org/download.cgi)
 
-3.[Git(用于配置仓库)](https://git-scm.com/downloads)
++[Git(用于配置仓库)](https://git-scm.com/downloads)
+2.推荐配置
++内存：≥4GB
+
++磁盘：≥20GB可用空间
+
++网络：各组件间需互通
 
 ### 配置中心部署
 
