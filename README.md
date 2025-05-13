@@ -25,7 +25,7 @@ Taroco
 ```
 ## 部署说明
 
-### taroco-cloud
+### taroco-cloud项目
 
 组件名称|核心功能|关键技术
 --|:--:|--:
@@ -33,6 +33,9 @@ cloud-api-gateway|统一API入口，负责路由转发，权限控制，请求�
 cloud-circuit-breaber|熔断监控仪表盘，实时显示服务健康状态|Hystrix Dashboard
 cloud-config-server|集中化管理所有，支持多环境配置|Spring Cloud Config Server
 cloud-registry-server|服务注册和发现中心，管理所有微服务的注册信息|Eureka Server
+
+### 部署顺序与依赖关系
+1.配置中心(config-server) -> 2.注册中心(registry-server) -> 3.熔断监控(circuit-breaber) -> 4.API(api-gateway)
 
 
 ### 技术选型
