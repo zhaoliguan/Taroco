@@ -32,8 +32,8 @@ Taroco
 
 ---
 <!--by ljq -->
-### 1.taroco-assembling项目
-
+## 1.taroco-assembling项目
+--
 taroco-assembling 是 Taroco 项目的聚合模块。它主要负责将各个子模块集成到一个整体中，用于统一构建和管理。
 
 #### 1. 环境准备
@@ -125,8 +125,8 @@ logging:
 
 
 <!--by lqk -->
-### 2.taroco-cloud项目
-
+## 2.taroco-cloud项目
+--
 
 组件名称|核心功能|关键技术
 --|:--:|--:
@@ -233,9 +233,12 @@ zuul:
    + 预期:返回{"status":"UP"}
 <!-- by lqk -->
 
+
+
 ---
 <!-- by tfj -->
-### 3.taroco-common项目
+## 3.taroco-common项目
+--
 ## 1. 环境准备
 
 在开始部署前，请确保以下环境和工具已安装并正确配置：
@@ -251,7 +254,7 @@ zuul:
 
 ### 1.2 网络配置
 - 确保服务器能够访问外部网络，用于下载依赖包和镜像。
-- 配置防火墙规则，开放必要的端口（如 `8080`, `3306`, `6379`）。
+- 配置防火墙规则，开放必要的端口（如 8080, 3306, 6379）。
 
 ---
 
@@ -269,18 +272,20 @@ zuul:
 <!-- by tfj -->
 
 
+
+
 <!-- by wzy -->
 ### 4. taroco-user 项目
-
+---
 **组件名称** | **核心功能** | **关键技术**
 ---|---|---
 taroco-user | 用户服务模块，提供用户管理、认证授权、权限控制等功能 | Spring Boot、Spring Cloud、MyBatis-Plus
 
 **部署顺序与依赖关系**  
-1. 依赖于 `taroco-root` 父项目提供基础配置
+1. 依赖于 taroco-root 父项目提供基础配置
 2. 需连接已部署的数据库服务
 3. 需注册到服务注册中心（如 Eureka 或 Nacos）
-4. 建议配合 API 网关（如 `cloud-api-gateway`）使用
+4. 建议配合 API 网关（如 cloud-api-gateway）使用
 
 
 ### 2. 详细部署方案
@@ -301,14 +306,14 @@ taroco-user | 用户服务模块，提供用户管理、认证授权、权限控
 #### **3. 服务部署**
 
 ##### **1. 配置数据库**
-创建数据库并执行初始化脚本（通常位于项目的 `src/main/resources/sql` 目录）：
+创建数据库并执行初始化脚本（通常位于项目的 src/main/resources/sql 目录）：
 ```sql
 CREATE DATABASE taroco_user CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 
 ##### **2. 用户服务部署 (taroco-user)**
-**配置文件 `application.yml`**：
+**配置文件 application.yml**：
 ```yaml
 server:
   port: 9001  # 服务端口
@@ -346,8 +351,8 @@ java -jar taroco-user-0.0.1-SNAPSHOT.jar
 
 #### **4. 验证部署成功**
 1. **注册中心验证**  
-   访问注册中心地址（如 Eureka：`http://localhost:8761` 或 Nacos：`http://localhost:8848/nacos`）  
-   预期：在服务列表中看到 `taroco-user` 服务已注册。
+   访问注册中心地址（如 Eureka：http://localhost:8761 或 Nacos：http://localhost:8848/nacos）  
+   预期：在服务列表中看到 taroco-user 服务已注册。
 
 2. **用户服务验证**  
    调用健康检查接口：
@@ -381,8 +386,8 @@ java -jar taroco-user-0.0.1-SNAPSHOT.jar
    - 确认注册中心服务已正常运行
 
 3. **依赖冲突**  
-   - 使用 `mvn dependency:tree` 查看依赖树，排除冲突依赖
-   - 确保父项目 `taroco-root` 版本兼容
+   - 使用 mvn dependency:tree 查看依赖树，排除冲突依赖
+   - 确保父项目 taroco-root 版本兼容
 
 
 ### 4. 扩展配置
@@ -409,6 +414,8 @@ logging:
     name: logs/taroco-user.log  # 日志文件位置
 ```
 <!-- by wzy -->
+
+
 
 ### 技术选型
 
