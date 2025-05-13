@@ -36,11 +36,12 @@ cloud-config-server|集中化管理服务配置，支持多环境隔离部署|Sp
 cloud-registry-server|服务注册与发现中心，管理微服务实例元数据|Eureka Server
 
 ### 部署顺序与依赖关系
+```mermaid
 graph TD
     A[配置中心] --> B[注册中心]
     B --> C[熔断监控]
     B --> D[API网关]
-
+```
 
 1.配置中心(config-server) -> 2.注册中心(registry-server) -> 3.熔断监控(circuit-breaber) -> 4.API(api-gateway)
 
