@@ -101,6 +101,12 @@ zuul:
 ##### 启动命令
 `java -jar cloud-api-gateway-0.0.1-SNAPSHOT.jar`
 
+#### 验证部署成功
+1.访问注册中心:http://localhost:8761 应看到管理界面
+2.访问配置中心:http://localhost:8888/application/default 应返回配置
+3.访问熔断监控:http://localhost:7979/hystrix
+4.通过API网关访问服务:http://localhost:8080/your-service
+
 ### 技术选型
 
 #### 后端技术:
