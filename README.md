@@ -75,7 +75,7 @@ eureka:
 ##### 启动命令
 `java -jar cloud-registry-server-0.0.1-SNAPSHOT.jar`
 
-#### 3.配置中心部署(cloud-circuit-breaker)
+#### 3.熔断监控部署(cloud-circuit-breaker)
 ```
 server:
   port: 7979
