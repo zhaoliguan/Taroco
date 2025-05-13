@@ -61,6 +61,45 @@ spring:
 ##### 启动命令
 `java -jar cloud-config-server-0.0.1-SNAPSHOT.jar`
 
+#### 2.注册中心部署(cloud-registry-server)
+```
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+```
+##### 启动命令
+`java -jar cloud-registry-server-0.0.1-SNAPSHOT.jar`
+
+#### 3.配置中心部署(cloud-circuit-breaker)
+```
+server:
+  port: 7979
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+```
+##### 启动命令
+`java -jar cloud-circuit-breaker-0.0.1-SNAPSHOT.jar`
+
+#### 4.API网关部署(cloud-api-gateway)
+```
+server:
+  port: 8080
+zuul:
+  routes:
+    user-service:
+      path: /user/**
+      serviceId: user-service
+```
+##### 启动命令
+`java -jar cloud-api-gateway-0.0.1-SNAPSHOT.jar`
 
 ### 技术选型
 
