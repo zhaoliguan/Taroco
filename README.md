@@ -120,16 +120,16 @@ zuul:
 
 #### 验证部署成功
 + 注册中心
-  访问:http://localhost:8761 
+   + 访问:http://localhost:8761 
   - [X] 预期:显示Eureka控制台,无注册服务
 + 配置中心
-  访问:http://localhost:8888/application/default 
+   + 访问:http://localhost:8888/application/default 
   - [X] 预期:返回JSON格式的配置信息
 + 熔断监控
-  访问:http://localhost:7979/hystrix
+   + 访问:http://localhost:7979/hystrix
   - [x] 预期:显示Hystrix Dashboard页面
 + API网关
-  访问:http://localhost:8080/your-service
+   + 访问:http://localhost:8080/your-service
   - [x] 预期:返回{"status":"UP"}
 <!-- by lqk -->
 ### 技术选型
