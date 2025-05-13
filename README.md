@@ -42,7 +42,7 @@ cloud-registry-server|服务注册和发现中心，管理所有微服务的注�
 
 2.[Maven 3.5+](https://maven.apache.org/download.cgi)
 
-3.Git(用于配置仓库)
+3.[Git(用于配置仓库)](https://git-scm.com/downloads)
 
 
 
