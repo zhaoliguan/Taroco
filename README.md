@@ -39,7 +39,9 @@ cloud-registry-server|服务注册和发现中心，管理所有微服务的注�
 
 ### 详细部署方案
 1.[JDK 8+环境](https://www.oracle.com/cn/java/technologies/downloads/) 
+
 2.Maven 3.5+
+
 3.Git(用于配置仓库)
 
 
