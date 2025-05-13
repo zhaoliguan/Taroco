@@ -30,24 +30,37 @@ Taroco
 
 组件名称|核心功能|关键技术
 --|:--:|--:
-cloud-api-gateway|统一API入口，负责路由转发，权限控制，请求过滤等  |Zuul/Gateway
-cloud-circuit-breaber|熔断监控仪表盘，实时显示服务健康状态|Hystrix Dashboard
-cloud-config-server|集中化管理所有，支持多环境配置|Spring Cloud Config Server
-cloud-registry-server|服务注册和发现中心，管理所有微服务的注册信息|Eureka Server
+cloud-api-gateway|统一API入口，提供路由转发，权限控制，请求过滤等能力  |Zuul/Gateway
+cloud-circuit-breaber|熔断监控仪表盘，实时可视化健康状态|Hystrix Dashboard
+cloud-config-server|集中化管理服务配置，支持多环境隔离部署|Spring Cloud Config Server
+cloud-registry-server|服务注册与发现中心，管理微服务实例元数据|Eureka Server
 
 ### 部署顺序与依赖关系
-1.配置中心(config-server) -> 2.注册中心(registry-server) -> 3.熔断监控(circuit-breaber) -> 4.API(api-gateway)
-
+```mermaid
+graph TD
+    A[配置中心] --> B[注册中心]
+    B --> C[熔断监控]
+    B --> D[API网关]
+```
 ### 详细部署方案
-1.[JDK 8+环境](https://www.oracle.com/cn/java/technologies/downloads/) 
+1.基础环境
++ [JDK 8+环境](https://www.oracle.com/cn/java/technologies/downloads/) 
 
-2.[Maven 3.5+](https://maven.apache.org/download.cgi)
++ [Maven 3.5+](https://maven.apache.org/download.cgi)
 
-3.[Git(用于配置仓库)](https://git-scm.com/downloads)
++ [Git(用于配置仓库)](https://git-scm.com/downloads)
+
+2.推荐配置
++ 内存：≥4GB
+
++ 磁盘：≥20GB可用空间
+
++ 网络：各组件间需互通
 
 ### 配置中心部署
 
 #### 1.配置中心部署(cloud-config-server)
+配置文件application.yml :
 ```
 server:
   port: 8888
@@ -59,10 +72,11 @@ spring:
           uri: https://github.com/your-org/config-repo
           search-paths: '{application}'
 ```
-##### 启动命令
+##### 启动命令:
 `java -jar cloud-config-server-0.0.1-SNAPSHOT.jar`
 
 #### 2.注册中心部署(cloud-registry-server)
+配置文件application.yml :
 ```
 server:
   port: 8761
@@ -73,10 +87,11 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
 ```
-##### 启动命令
+##### 启动命令:
 `java -jar cloud-registry-server-0.0.1-SNAPSHOT.jar`
 
 #### 3.熔断监控部署(cloud-circuit-breaker)
+配置文件application.yml :
 ```
 server:
   port: 7979
@@ -86,10 +101,11 @@ management:
       exposure:
         include: hystrix.stream
 ```
-##### 启动命令
+##### 启动命令:
 `java -jar cloud-circuit-breaker-0.0.1-SNAPSHOT.jar`
 
 #### 4.API网关部署(cloud-api-gateway)
+配置文件application.yml :
 ```
 server:
   port: 8080
@@ -99,17 +115,22 @@ zuul:
       path: /user/**
       serviceId: user-service
 ```
-##### 启动命令
+##### 启动命令:
 `java -jar cloud-api-gateway-0.0.1-SNAPSHOT.jar`
 
 #### 验证部署成功
-1.访问注册中心:http://localhost:8761 应看到管理界面
-
-2.访问配置中心:http://localhost:8888/application/default 应返回配置
-
-3.访问熔断监控:http://localhost:7979/hystrix
-
-4.通过API网关访问服务:http://localhost:8080/your-service    
++ 注册中心
+   + 访问:http://localhost:8761 
+   + 预期:显示Eureka控制台,无注册服务
++ 配置中心
+   + 访问:http://localhost:8888/application/default 
+   + 预期:返回JSON格式的配置信息
++ 熔断监控
+   + 访问:http://localhost:7979/hystrix
+   + 预期:显示Hystrix Dashboard页面
++ API网关
+   + 访问:http://localhost:8080/your-service
+   + 预期:返回{"status":"UP"}
 <!-- by lqk -->
 ### 技术选型
 
