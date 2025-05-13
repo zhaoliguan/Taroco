@@ -269,6 +269,121 @@ zuul:
 - **追踪模块**: 提供分布式链路追踪功能。
 
 ---
+
+## 3. 部署步骤
+
+### 3.1 下载代码
+```bash
+# 克隆代码仓库
+git clone https://github.com/tfj-bot/Taroco.git
+cd Taroco
+```
+
+---
+
+### 3.2 配置后端服务
+
+#### 3.2.1 数据库初始化
+1. 创建 MySQL 数据库：
+    ```sql
+    CREATE DATABASE taroco CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+    ```
+2. 导入初始 SQL 脚本：
+    ```bash
+    mysql -u root -p taroco < scripts/init-database.sql
+    ```
+
+#### 3.2.2 修改配置文件
+- 找到 `application.yml` 或 `application.properties` 文件，更新以下配置项：
+    ```yaml
+    spring:
+      datasource:
+        url: jdbc:mysql://<数据库地址>:3306/taroco?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: <数据库用户名>
+        password: <数据库密码>
+      redis:
+        host: <Redis 地址>
+        port: 6379
+    ```
+
+#### 3.2.3 构建后端服务
+```bash
+# 使用 Maven 构建
+mvn clean package -DskipTests
+```
+
+- 构建完成后，所有服务的可执行 `jar` 文件将存储在 `target/` 目录下。
+
+---
+
+### 3.3 配置前端服务
+
+如果项目包含前端模块：
+1. 切换到前端目录，例如 `web/` 或 `frontend/`。
+2. 安装依赖：
+    ```bash
+    npm install
+    ```
+3. 构建前端代码：
+    ```bash
+    npm run build
+    ```
+4. 构建完成的静态文件通常位于 `dist/` 或 `build/` 目录下。
+
+---
+
+### 3.4 启动服务
+
+#### 3.4.1 单机启动
+可以直接运行 `jar` 文件来启动服务：
+```bash
+java -jar target/{module-name}.jar
+```
+
+#### 3.4.2 使用 Docker 部署
+1. 确保安装 Docker 和 Docker Compose。
+2. 修改 `docker-compose.yml` 文件，更新相关配置。
+3. 启动服务：
+    ```bash
+    docker-compose up -d
+    ```
+
+---
+
+### 3.5 验证服务
+1. 检查服务是否正常运行：
+    ```bash
+    curl http://localhost:8080/actuator/health
+    ```
+    返回 `{"status":"UP"}` 表示服务正常。
+2. 访问前端页面：
+    - 如果部署了前端服务，打开浏览器访问 `http://<服务器IP>:<前端端口>`。
+
+---
+
+## 4. 常见问题排查
+
+### 4.1 数据库连接失败
+- 确认 MySQL 服务是否启动。
+- 检查数据库地址、端口、用户名和密码是否正确。
+
+### 4.2 服务启动失败
+- 检查 `logs/` 文件夹中的日志错误信息。
+- 确保所有依赖服务已启动（如 Redis、MySQL）。
+
+### 4.3 前端页面无法访问
+- 确保前端构建成功。
+- 确认前端与后端的 API 地址配置一致。
+
+---
+
+## 5. 其他内容
+
+- **扩展模块**: 后期可以根据需求加入存储系统、微信系统等。
+- **性能优化**: 配置负载均衡和缓存策略以提高系统响应速度。
+
+---
+
 <!-- by tfj -->
 
 
